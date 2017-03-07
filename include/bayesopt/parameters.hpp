@@ -116,7 +116,7 @@ namespace bayesopt {
         Parameters();
         
         /* Constructor to get values from bopt_params */
-        Parameters(bopt_params c_params);
+        Parameters(bopt_params &c_params);
         
         /* Generates a bopt_params struct from a Parameters instance */
         bopt_params generate_bopt_params();

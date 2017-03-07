@@ -5,7 +5,13 @@
 #ifdef PYLONG_BITS_IN_DIGIT
 #define CYTHON_USE_PYLONG_INTERNALS 0
 #else
+#ifdef _DEBUG
+#undef _DEBUG
 #include "pyconfig.h"
+#define _DEBUG
+#else
+#include "pyconfig.h"
+#endif
 #ifdef PYLONG_BITS_IN_DIGIT
 #define CYTHON_USE_PYLONG_INTERNALS 1
 #else
@@ -13,7 +19,15 @@
 #endif
 #endif
 #endif
+
+#ifdef _DEBUG
+#undef _DEBUG
 #include "Python.h"
+#define _DEBUG
+#else
+#include "Python.h"
+#endif
+
 #ifndef Py_PYTHON_H
     #error Python headers needed to compile C extensions, please install development version of Python.
 #elif PY_VERSION_HEX < 0x02040000

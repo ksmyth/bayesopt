@@ -23,6 +23,7 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <algorithm>
+#include <cctype>
 #include <boost/numeric/ublas/assignment.hpp>
 #include "bayesopt/bayesopt.hpp"
 #include "param_loader.hpp"

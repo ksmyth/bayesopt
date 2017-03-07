@@ -85,7 +85,11 @@ namespace bayesopt
     /* Checks if a file exists */
     bool FileParser::fileExists(){
         std::ifstream ifile(filename.c_str());
-        bool result = ifile;
+		bool result = false;
+		if(ifile)
+		{
+			result = true;
+		}
         ifile.close();
         return result;
     }

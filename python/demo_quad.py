@@ -39,12 +39,14 @@ class BayesOptTest(BayesOptContinuous):
         return testfunc(Xin)
 
 
+raw_input("Press enter")
+
 # Let's define the parameters
 # For different options: see parameters.h and cpp
 # If a parameter is not define, it will be automatically set
 # to a default value.
 params = {}
-params['n_iterations'] = 50
+params['n_iterations'] = 60
 params['n_iter_relearn'] = 5
 params['n_init_samples'] = 2
 

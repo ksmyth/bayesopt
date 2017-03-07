@@ -246,8 +246,9 @@ namespace bayesopt {
         init_default();
     }
         
-    Parameters::Parameters(bopt_params c_params):
+    Parameters::Parameters(bopt_params &c_params):
         kernel(), mean(), crit_params(){
+		init_default();
         n_iterations = c_params.n_iterations;
         n_inner_iterations = c_params.n_inner_iterations;
         n_init_samples = c_params.n_init_samples;

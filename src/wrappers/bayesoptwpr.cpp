@@ -40,7 +40,7 @@ class CContinuousModel: public bayesopt::ContinuousModel
  public:
 
   CContinuousModel(size_t dim, bopt_params params):
-    ContinuousModel(dim,params)  {}; 
+    ContinuousModel(dim, bayesopt::Parameters(params))  {}; 
 
   virtual ~CContinuousModel(){};
 
