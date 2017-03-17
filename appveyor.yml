@@ -1,0 +1,26 @@
+# TODO:
+#environment:
+#  matrix:
+#    - PYTHON: "C:\\Python27"
+#    - PYTHON: "C:\\Python27-x64"
+#    - PYTHON: "C:\\Python35"
+#    - PYTHON: "C:\\Python35-x64"
+
+install:
+  - python -m pip install wheel
+  - python -m pip install -i https://pypi.metamorphsoftware.com/ numpy
+
+build_script:
+  - nuget install -Version 1.63.0.0 boost
+  # note Python.exe must be in %PATH%
+  - 'cmake.exe -D BAYESOPT_BUILD_SHARED=OFF -D BAYESOPT_PYTHON_INTERFACE=ON -D BOOST_INCLUDEDIR="%CD%\boost.1.63.0.0\lib\native\include" -Wno-dev .'
+  - '"C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" BayesOpt.sln /p:Configuration=Release /fl /t:Rebuild /m'
+  - python setup.py bdist_wheel
+
+artifacts:
+  - path: "*.log"
+  - path: 'dist\*.whl'
+
+cache:
+  - '%LocalAppData%\NuGet\Cache'
+  - '%LocalAppData%\pip\cache'
