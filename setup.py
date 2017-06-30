@@ -7,7 +7,7 @@ import platform
 
 this_dir = os.path.dirname(os.path.abspath(__file__))
 
-version = '0.1'
+version = '0.3'
 
 setup_args = dict(name='bayesopt',
     version=version,

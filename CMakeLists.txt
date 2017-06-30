@@ -192,7 +192,7 @@ INSTALL(
 )
 
 INSTALL(
-  DIRECTORY include/bayesopt DESTINATION include/bayesopt
+  DIRECTORY include/bayesopt DESTINATION include
 )
 
 
@@ -223,7 +223,7 @@ IF(BAYESOPT_PYTHON_INTERFACE)
 
   #Find where to install Python libs
   execute_process ( COMMAND 
-         python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()" 
+         python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"
          OUTPUT_VARIABLE PYTHON_SITE_PACKAGES OUTPUT_STRIP_TRAILING_WHITESPACE)
 
   INSTALL(
@@ -231,4 +231,9 @@ IF(BAYESOPT_PYTHON_INTERFACE)
     LIBRARY DESTINATION ${PYTHON_SITE_PACKAGES}
     ARCHIVE DESTINATION ${PYTHON_SITE_PACKAGES}
   )
+  INSTALL(
+    FILES ./python/bayesoptmodule.py
+    DESTINATION ${PYTHON_SITE_PACKAGES}
+  )
+
 ENDIF(BAYESOPT_PYTHON_INTERFACE)
